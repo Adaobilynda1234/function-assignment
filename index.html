@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function</title>
+  </head>
+  <body>
+    <h1>function project</h1>
+    <p>please open your console to interactive with the project</p>
+    <script>
+      // javascript script
+      //hackcity assignment
+      // assignment 1
+      function studentScorce(store) {
+        return store >= 60 ? "pass" : "fail";
+      }
+      console.log(studentScorce(59));
+
+      // assignment 2
+
+      const temperatureConversion = (temp, unit) => {
+        if (unit === "fahrenheit") {
+          return temp;
+        } else if (unit === "celsius") {
+          return (temp = Math.round((temp * 9) / 5 + 32));
+        } else {
+          return "invalid unit";
+        }
+      };
+
+      console.log(temperatureConversion(15, "fahrenheit"));
+
+      // assigment 3
+      const assignUserRole = (role) => {
+        switch (role) {
+          case "admin":
+            return "full access";
+          case "user":
+            return "Limited Access";
+          default:
+            return "No access";
+        }
+      };
+      console.log(assignUserRole("admin"));
+
+      // assignment 4
+
+      function evenOrOdd(num) {
+        return num % 2 === 0 ? "even" : "odd";
+      }
+      console.log(evenOrOdd(12));
+
+      // assignment 5
+      // Define the Book class
+      class Book {
+        constructor(title, author, isRead = false) {
+          this.title = title;
+          this.author = author;
+          this.isRead = isRead;
+        }
+      }
+
+      // Create an empty array to represent the library's collection of books
+      const library = [];
+
+      // Function to add a book to the library
+      const addBook = (title, author) => {
+        const book = new Book(title, author);
+        library.push(book);
+        console.log("Book added successfully!");
+      };
+
+      // Function to remove a book from the library
+      const removeBook = (title) => {
+        const index = library.findIndex((book) => book.title === title);
+        if (index !== -1) {
+          library.splice(index, 1);
+          console.log("Book removed successfully!");
+        } else {
+          console.log("Book not found in the library.");
+        }
+      };
+
+      // Function to list all books in the library
+      const listBooks = () => {
+        console.log("List of books in the library:");
+        library.forEach((book, index) => {
+          console.log(
+            `${index + 1}. Title: "${book.title}" - Author: "${
+              book.author
+            }" - Read: ${book.isRead ? "Yes" : "No"}`
+          );
+        });
+      };
+
+      // Function to mark a book as read
+      const markAsRead = (title) => {
+        const book = library.find((book) => book.title === title);
+        if (book) {
+          book.isRead = true;
+          console.log("Book marked as read!");
+        } else {
+          console.log("Book not found in the library.");
+        }
+      };
+
+      // Menu loop
+      console.log("Welcome to the Library Management System!");
+      let choice;
+      do {
+        console.log(`
+    1. Add a book
+    2. Remove a book
+    3. List all books
+    4. Mark a book as read
+    5. Exit
+    `);
+        choice = prompt("Enter your choice (1-5):");
+        switch (choice) {
+          case "1":
+            const bookTitle = prompt("Enter the title of the book:");
+            const bookAuthor = prompt("Enter the author of the book:");
+            addBook(bookTitle, bookAuthor);
+            break;
+          case "2":
+            const bookToRemove = prompt(
+              "Enter the title of the book to remove:"
+            );
+            removeBook(bookToRemove);
+            break;
+          case "3":
+            listBooks();
+            break;
+          case "4":
+            const bookToMarkAsRead = prompt(
+              "Enter the title of the book to mark as read:"
+            );
+            markAsRead(bookToMarkAsRead);
+            break;
+          case "5":
+            console.log("Goodbye!");
+            break;
+          default:
+            console.log("Invalid choice. Please enter a number from 1 to 5.");
+        }
+      } while (choice !== "5");
+    </script>
+  </body>
+</html>
